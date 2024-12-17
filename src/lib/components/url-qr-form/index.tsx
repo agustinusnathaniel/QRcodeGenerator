@@ -9,7 +9,7 @@ import SaveQRButton from "./SaveQRButton";
 import type { QRFormType } from "./types";
 import { QRStyleOptions } from "./types";
 
-const QRForm = () => {
+export const URLQRForm = () => {
   const qrCodeSize = useBreakpointValue({
     base: 200,
     sm: 220,
@@ -66,5 +66,3 @@ const QRForm = () => {
     </Grid>
   );
 };
-
-export default QRForm;

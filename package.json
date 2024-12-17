@@ -2,7 +2,12 @@
   "name": "qrcodegen",
   "version": "0.1.1",
   "private": true,
-  "author": "sozonome",
+  "author": "agustinusnathaniel",
+  "engines": {
+    "node": ">=22.11.x",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,8 +16,8 @@
     "lint:fix": "eslint src --fix && yarn format",
     "type-check": "tsc --noEmit",
     "format": "prettier --write src",
-    "up": "yarn upgrade-interactive",
-    "up-latest": "yarn up --latest",
+    "up-interactive": "pnpm up -i",
+    "up-latest": "pnpm up-interactive -L",
     "release": "cross-env HUSKY=0 standard-version",
     "push-release": "git push --follow-tags origin main",
     "prepare": "husky install"

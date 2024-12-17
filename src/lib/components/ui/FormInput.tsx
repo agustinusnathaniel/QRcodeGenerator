@@ -22,11 +22,6 @@ const FormInput = ({
   errorMsg,
   ...inputProps
 }: FormInputProps) => {
-  const defaultInputProps: InputProps = {
-    borderRadius: 24,
-    size: "lg",
-  };
-
   return (
     <FormControl
       isInvalid={isInvalid}
@@ -34,7 +29,7 @@ const FormInput = ({
       isRequired={isRequired}
     >
       {label && <FormLabel>{label}</FormLabel>}
-      <Input {...defaultInputProps} {...inputProps} />
+      <Input borderRadius={24} size="lg" {...inputProps} />
       {errorMsg && <FormErrorMessage>{errorMsg}</FormErrorMessage>}
     </FormControl>
   );
