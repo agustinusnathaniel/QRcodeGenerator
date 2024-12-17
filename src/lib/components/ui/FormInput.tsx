@@ -3,6 +3,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  forwardRef,
   Input,
 } from "@chakra-ui/react";
 
@@ -14,25 +15,30 @@ type FormInputProps = Pick<
   errorMsg?: string;
 } & InputProps;
 
-const FormInput = ({
-  isDisabled,
-  isInvalid,
-  isRequired,
-  label,
-  errorMsg,
-  ...inputProps
-}: FormInputProps) => {
-  return (
-    <FormControl
-      isInvalid={isInvalid}
-      isDisabled={isDisabled}
-      isRequired={isRequired}
-    >
-      {label && <FormLabel>{label}</FormLabel>}
-      <Input borderRadius={24} size="lg" {...inputProps} />
-      {errorMsg && <FormErrorMessage>{errorMsg}</FormErrorMessage>}
-    </FormControl>
-  );
-};
+const FormInput = forwardRef(
+  (
+    {
+      isDisabled,
+      isInvalid,
+      isRequired,
+      label,
+      errorMsg,
+      ...inputProps
+    }: FormInputProps,
+    ref
+  ) => {
+    return (
+      <FormControl
+        isInvalid={isInvalid}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
+      >
+        {label && <FormLabel>{label}</FormLabel>}
+        <Input borderRadius={24} size="lg" ref={ref} {...inputProps} />
+        {errorMsg && <FormErrorMessage>{errorMsg}</FormErrorMessage>}
+      </FormControl>
+    );
+  }
+);
 
 export default FormInput;

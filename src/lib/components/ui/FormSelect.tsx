@@ -3,6 +3,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  forwardRef,
   Select,
 } from "@chakra-ui/react";
 
@@ -14,30 +15,30 @@ type FormSelectProps = Pick<
   errorMsg?: string;
 } & SelectProps;
 
-const FormSelect = ({
-  isInvalid,
-  isDisabled,
-  isRequired,
-  label,
-  errorMsg,
-  ...selectProps
-}: FormSelectProps) => {
-  const defaultSelectProps: SelectProps = {
-    borderRadius: 24,
-    size: "lg",
-  };
-
-  return (
-    <FormControl
-      isInvalid={isInvalid}
-      isDisabled={isDisabled}
-      isRequired={isRequired}
-    >
-      {label && <FormLabel>{label}</FormLabel>}
-      <Select {...defaultSelectProps} {...selectProps} />
-      {errorMsg && <FormErrorMessage>{errorMsg}</FormErrorMessage>}
-    </FormControl>
-  );
-};
+const FormSelect = forwardRef(
+  (
+    {
+      isInvalid,
+      isDisabled,
+      isRequired,
+      label,
+      errorMsg,
+      ...selectProps
+    }: FormSelectProps,
+    ref
+  ) => {
+    return (
+      <FormControl
+        isInvalid={isInvalid}
+        isDisabled={isDisabled}
+        isRequired={isRequired}
+      >
+        {label && <FormLabel>{label}</FormLabel>}
+        <Select borderRadius={24} size="lg" ref={ref} {...selectProps} />
+        {errorMsg && <FormErrorMessage>{errorMsg}</FormErrorMessage>}
+      </FormControl>
+    );
+  }
+);
 
 export default FormSelect;
