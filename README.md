@@ -1,3 +1,6 @@
+> [!WARNING]
+> This project has been archived. The QRCodeGenerator tool has been moved to https://tools.sznm.dev/qrcode-generator
+
 # QRCode Generator
 
 an app to quickly generate qr code
